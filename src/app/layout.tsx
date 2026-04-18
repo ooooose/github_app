@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Geist } from 'next/font/google';
 import './globals.css';
+import { cn } from '@/lib/utils';
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${inter.className} bg-white text-gray-900`}>
+    <html
+      lang="ja"
+      className={cn(
+        'bg-white',
+        'text-gray-900',
+        inter.className,
+        'font-sans',
+        geist.variable,
+      )}
+    >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
