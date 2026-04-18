@@ -1,1 +1,3 @@
-# github_app
+# github-app
+
+## 概要
