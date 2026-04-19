@@ -8,7 +8,7 @@ export function Header() {
           href="/"
           className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
         >
-          <span className="text-lg font-semibold">GitHub</span>
+          <span className="text-lg font-semibold">GitRepos</span>
         </Link>
       </div>
     </header>
