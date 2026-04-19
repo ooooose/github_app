@@ -18,7 +18,7 @@ export function RepoList({ keyword }: Props) {
     if (!keyword) return null;
     if (prev && prev.items.length === 0) return null;
 
-    return `/api/search?q=${keyword}&page=${pageIndex + 1}`;
+    return `/api/github?q=${keyword}&page=${pageIndex + 1}`;
   };
 
   const { data, setSize, isValidating } =

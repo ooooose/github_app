@@ -24,9 +24,7 @@ export async function getRepo(
   owner: string,
   name: string,
 ): Promise<Repository> {
-  const res = await fetch(`https://api.github.com/repos/${owner}/${name}`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(`api/github/${owner}/${name}`);
 
   if (!res.ok) {
     throw new Error('Failed to fetch repository');
