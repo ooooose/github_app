@@ -1,0 +1,26 @@
+import Link from 'next/link';
+import type { Repository } from '@/types/github';
+
+type Props = {
+  repo: Repository;
+};
+
+export function RepoItem({ repo }: Props) {
+  return (
+    <Link href={`/repo/${repo.owner.login}/${repo.name}`}>
+      <div className="py-4 border-b border-gray-200 hover:bg-gray-50 cursor-pointer">
+        <h3 className="text-blue-600 font-semibold">{repo.full_name}</h3>
+
+        <p className="text-sm text-gray-600 mt-1">
+          {repo.description ?? 'No description'}
+        </p>
+
+        <div className="flex gap-4 text-xs text-gray-500 mt-2">
+          <span>⭐ {repo.stargazers_count}</span>
+          <span>🍴 {repo.forks_count}</span>
+          <span>{repo.language ?? 'Unknown'}</span>
+        </div>
+      </div>
+    </Link>
+  );
+}
