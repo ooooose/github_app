@@ -32,7 +32,7 @@ export function RepoList({ keyword }: Props) {
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        setSize((prev) => prev + 1); // ←ここ重要
+        setSize((prev) => prev + 1);
       }
     });
 
