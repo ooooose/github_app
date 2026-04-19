@@ -4,17 +4,31 @@ import { useState } from 'react';
 import { RepoList } from './repo-list';
 
 export function SearchBox() {
-  const [keyword, setKeyword] = useState<string>('');
+  const [input, setInput] = useState('');
+  const [keyword, setKeyword] = useState('');
+
+  const handleSearch = () => {
+    setKeyword(input);
+  };
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search repositories..."
-        className="w-full border p-2 rounded-md"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
-      />
+      <div className="flex gap-2">
+        <input
+          type="text"
+          placeholder="Search repositories..."
+          className="flex-1 border p-2 rounded-md"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+
+        <button
+          onClick={handleSearch}
+          className="px-4 py-2 bg-black text-white rounded-md"
+        >
+          Search
+        </button>
+      </div>
 
       <div className="mt-6">
         <RepoList keyword={keyword} />
