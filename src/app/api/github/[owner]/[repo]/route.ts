@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(
-  _: Request,
-  { params }: { params: { owner: string; repo: string } },
+  request: NextRequest,
+  { params }: { params: Promise<{ owner: string; repo: string }> },
 ) {
-  const { owner, repo } = params;
+  const { owner, repo } = await params;
 
   const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
     headers: {

@@ -2,14 +2,15 @@ import Image from 'next/image';
 import { getRepo } from '@/lib/github';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     owner: string;
-    name: string;
-  };
+    repo: string;
+  }>;
 };
 
 export default async function Page({ params }: PageProps) {
-  const repo = await getRepo(params.owner, params.name);
+  const { owner, repo: repoName } = await params;
+  const repo = await getRepo(owner, repoName);
 
   return (
     <div className="max-w-3xl mx-auto p-6">
