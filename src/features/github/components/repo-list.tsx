@@ -1,32 +1,15 @@
 'use client'
 
-import useSWRInfinite from 'swr/infinite'
 import { useEffect, useRef } from 'react'
 import { RepoItem } from '@/features/github/components/repo-item'
-import { fetcher } from '@/lib/fetcher'
-import type {
-  Repository,
-  SearchRepositoriesResponse,
-} from '@/features/github/types/github'
+import { useRepoList } from '@/features/github/hooks/use-repo-list'
 
 type Props = {
   keyword: string
 }
 
 export function RepoList({ keyword }: Props) {
-  const getKey = (
-    pageIndex: number,
-    prev: SearchRepositoriesResponse | null,
-  ): string | null => {
-    if (!keyword) return null
-    if (prev && prev.items.length === 0) return null
-
-    return `/api/github?q=${keyword}&page=${pageIndex + 1}`
-  }
-
-  const { data, setSize, isValidating } =
-    useSWRInfinite<SearchRepositoriesResponse>(getKey, fetcher)
-
+  const { repos, setSize, isValidating } = useRepoList(keyword)
   const observerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -43,8 +26,6 @@ export function RepoList({ keyword }: Props) {
 
     return () => observer.disconnect()
   }, [setSize])
-
-  const repos: Repository[] = data ? data.flatMap((page) => page.items) : []
 
   return (
     <div>
