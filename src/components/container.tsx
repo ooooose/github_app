@@ -16,7 +16,11 @@ export function Container({ className, size = 'md', ...props }: Props) {
   return (
     <div
       data-slot="container"
-      className={cn('mx-auto w-full px-6', sizeClassName[size], className)}
+      className={cn(
+        'mx-auto w-full px-4 sm:px-6',
+        sizeClassName[size],
+        className,
+      )}
       {...props}
     />
   )

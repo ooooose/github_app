@@ -6,21 +6,25 @@ import { Input } from '@/components/ui/input'
 
 export function SearchForm({ onSearch }: { onSearch: (q: string) => void }) {
   const [value, setValue] = useState('')
+  const trimmed = value.trim()
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    onSearch(trimmed)
+  }
 
   return (
-    <div className="border-b border-border pb-4 mb-4">
+    <form onSubmit={handleSubmit} className="flex gap-2">
       <Input
+        id="search-input"
+        name="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Search repositories..."
+        placeholder="リポジトリを検索..."
       />
-      <Button
-        onClick={() => onSearch(value)}
-        variant="primary"
-        className="mt-2"
-      >
-        Search
+      <Button type="submit" variant="primary" disabled={!trimmed}>
+        検索
       </Button>
-    </div>
+    </form>
   )
 }

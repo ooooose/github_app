@@ -2,11 +2,11 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export function RepoDetailSkeleton() {
   return (
-    <div className="p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
+    <div className="w-full min-w-0 overflow-hidden p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
       <div className="flex items-center gap-4">
         <Skeleton className="h-12 w-12 rounded-full" />
-        <div className="min-w-0 space-y-2">
-          <Skeleton className="h-6 w-72 max-w-full" />
+        <div className="min-w-0 flex-1 space-y-2">
+          <Skeleton className="h-6 w-full max-w-[18rem]" />
           <Skeleton className="h-4 w-20" />
         </div>
       </div>
