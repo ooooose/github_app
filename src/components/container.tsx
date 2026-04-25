@@ -11,6 +11,7 @@ const sizeClassName: Record<NonNullable<Props['size']>, string> = {
   lg: 'max-w-7xl',
 }
 
+// NOTE: ページ全体の横幅を統一するためのラッパーコンポーネント
 export function Container({ className, size = 'md', ...props }: Props) {
   return (
     <div
