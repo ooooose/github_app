@@ -37,6 +37,21 @@ UI は見た目の統一と変更容易性を重視しています。
 - SWR
 - Vitest + Testing Library
 
+## 工夫したポイント
+
+## AIを活用した箇所
+
+以下の対応にcopilot,codex,claudeを活用しました。
+
+- 設計・実装パターンの壁打ち
+- 実装上のバグ修正、リファクタリングの指摘
+- GitHubに寄せたUIにするためのスタイリング全般
+
+## ドキュメント
+
+- [ARCHITECTURE.md](./ARCHITECTURE.md)（設計/アーキテクチャ）
+- [TEST_GUIDE.md](./TEST_GUIDE.md)（テスト方針/設計）
+
 ## 開発コマンド
 
 ```bash

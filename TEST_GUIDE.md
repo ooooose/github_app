@@ -112,11 +112,33 @@ export default defineConfig({
 
 ---
 
+## テスト設計（パターン）
+
+このリポジトリは、実務で一般的なテスト設計パターンに寄せて運用します。
+
+### Testing Pyramid（テストピラミッド）
+
+基本は「安いテストを厚く、重いテストを薄く」という思想で記述する指針を採用しています。
+
+- **Unit（厚め）**: `lib/`の純粋関数、`features/*/api`のキー生成など（副作用が少なく高速）
+- **Component（適量）**: `components/`や`features/*/components` の振る舞い（ユーザー視点）
+- **E2E（最小）**: このリポジトリでは現状未導入だが、必要になったら別途追加する想定
+
+### Testing Library の原則
+
+Reactコンポーネントは「ユーザーが見て操作するもの」を中心にテストします。
+
+- アクセシビリティと相性が良い`getByRole`を優先
+- `fireEvent`の乱用を避け、`user-event` で操作を表現
+- Snapshotは差分ノイズが増えやすいため原則使わない
+
+---
+
 ## モックの書き方
 
 ### next/link・next/imageのモック
 
-`next/link`と`next/imageはjsdom環境では動作しないためモックが必要です。
+`next/link`と`next/image`はjsdom環境では動作しないためモックが必要です。
 テストファイルごとに記述します。
 
 ```tsx
@@ -239,7 +261,6 @@ describe('Header', () => {
 {
   "scripts": {
     "test": "vitest --reporter=dot",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage --reporter=dot"
   }
 }
@@ -249,7 +270,7 @@ describe('Header', () => {
 
 ## CI
 
-`.github/workflows/vitest.yml`でPR・mainへのpush時に自動実行されます。
+`.github/workflows/test.yml`でPR・mainへのpush時に自動実行されます。
 以下のパスへの変更のみの場合はスキップされます。
 
 - `**.md`
