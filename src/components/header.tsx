@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Header() {
   return (
@@ -8,6 +9,7 @@ export function Header() {
           href="/"
           className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
         >
+          <Image src="/github.png" alt="GitHub Logo" width={28} height={28} />
           <span className="text-lg font-semibold">GitRepos</span>
         </Link>
       </div>
