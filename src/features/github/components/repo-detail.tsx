@@ -16,7 +16,7 @@ const stats = (repo: Repository) => [
 
 export function RepoDetail({ repo }: Props) {
   return (
-    <div className="max-w-4xl mx-auto p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm mt-6">
+    <div className="p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
       <div className="flex items-center gap-4">
         <Image
           src={repo.owner.avatar_url}
