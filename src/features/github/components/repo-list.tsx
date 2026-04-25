@@ -28,14 +28,16 @@ export function RepoList({ keyword }: Props) {
   }, [setSize])
 
   return (
-    <div>
+    <div className="space-y-3">
       {repos.map((repo) => (
         <RepoItem key={repo.id} repo={repo} />
       ))}
 
       <div ref={observerRef} className="h-10" />
 
-      {isValidating && <p className="text-sm text-gray-500">Loading...</p>}
+      {isValidating && (
+        <p className="text-sm text-muted-foreground">Loading...</p>
+      )}
     </div>
   )
 }

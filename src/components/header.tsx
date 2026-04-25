@@ -3,11 +3,11 @@ import Image from 'next/image'
 
 export function Header() {
   return (
-    <header className="bg-white text-gray-900 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <header className="bg-[#24292f] text-white border-b border-black/20 dark:bg-[#161b22] dark:border-border">
+      <div className="max-w-4xl mx-auto px-6 py-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
+          className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
           <Image src="/github.png" alt="GitHub Logo" width={28} height={28} />
           <span className="text-lg font-semibold">GitRepos</span>

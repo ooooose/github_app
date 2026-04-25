@@ -26,14 +26,13 @@ export default function RootLayout({
     <html
       lang="ja"
       className={cn(
-        'bg-white',
-        'text-gray-900',
+        'bg-background text-foreground',
         inter.className,
         'font-sans',
         geist.variable,
       )}
     >
-      <body className="min-h-full flex flex-col bg-white">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
         <Header />
         {children}
       </body>

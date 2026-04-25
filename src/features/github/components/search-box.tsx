@@ -24,7 +24,7 @@ export function SearchBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button type="submit" disabled={!input.trim()}>
+        <Button type="submit" variant="primary" disabled={!input.trim()}>
           検索
         </Button>
       </form>
