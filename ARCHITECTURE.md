@@ -44,7 +44,7 @@ UIはGitHubに馴染みのあるトーンを目標にしつつ、実務で保守
 
 ### Design Tokens（CSS変数）+ UIプリミティブ（合成）
 
-- `src/app/globals.css` のトークンを UI プリミティブ（`src/components/ui/**`）から参照し、直書きカラーを避けます。
+- `src/app/globals.css` のトークンをUIプリミティブ（`src/components/ui/**`）から参照し、直書きカラーを避けます。
 - 目的: デザインの一貫性、テーマ変更・微調整の容易性。
 
 ### Progressive Prefetch（段階的な先読み）
