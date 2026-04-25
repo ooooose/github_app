@@ -9,7 +9,14 @@ export function Header() {
           href="/"
           className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <Image src="/github.png" alt="GitHub Logo" width={28} height={28} />
+          <Image
+            src="/github.png"
+            alt="GitHub Logo"
+            width={28}
+            height={28}
+            className="block"
+            priority
+          />
           <span className="text-lg font-semibold">GitRepos</span>
         </Link>
       </div>

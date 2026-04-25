@@ -25,7 +25,7 @@ export function RepoItem({ repo }: Props) {
         <p className="text-link font-semibold truncate hover:underline">
           {repo.full_name}
         </p>
-        <p className="text-sm text-muted-foreground mt-1 line-clamp-2 break-words">
+        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
           {repo.description ?? 'No description'}
         </p>
         <div className="flex gap-4 text-xs text-muted-foreground mt-2">
