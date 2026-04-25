@@ -47,9 +47,9 @@ describe('Header', () => {
 
   it('GitHubロゴ画像が表示される', () => {
     render(<Header />)
-    const img = screen.getByAltText('GitHub Logo')
+    const img = screen.getByAltText('App Logo')
     expect(img).toBeInTheDocument()
-    expect(img).toHaveAttribute('src', '/github.png')
+    expect(img).toHaveAttribute('src', '/icon.png')
   })
 
   it('サービス名が表示される', () => {
