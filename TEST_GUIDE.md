@@ -42,51 +42,7 @@ src/
 │       └── __tests__/
 │           └── repo-item.test.tsx
 tests/
-└── setup.ts   # セットアップのみ。テストファイルはここに置かない
-```
-
----
-
-## セットアップ
-
-### tests/setup.ts
-
-```typescript
-import '@testing-library/jest-dom'
-```
-
-### vitest.config.ts
-
-```typescript
-import { defineConfig } from 'vitest/config'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./tests/setup.ts'],
-    include: ['src/**/__tests__/**/*.{test,spec}.{ts,tsx}'],
-    pool: 'forks',
-    coverage: {
-      provider: 'v8',
-      exclude: [
-        'node_modules/**',
-        'tests/**',
-        '**/__tests__/**',
-        '*.config.*',
-        'src/app/**',
-      ],
-    },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-})
+└── setup.ts   # セットアップのみ。基本テストファイルはここに置かない
 ```
 
 ---
@@ -124,73 +80,13 @@ export default defineConfig({
 - **Component（適量）**: `components/`や`features/*/components` の振る舞い（ユーザー視点）
 - **E2E（最小）**: このリポジトリでは現状未導入だが、必要になったら別途追加する想定
 
-### Testing Library の原則
+### Testing Libraryの原則
 
 Reactコンポーネントは「ユーザーが見て操作するもの」を中心にテストします。
 
 - アクセシビリティと相性が良い`getByRole`を優先
 - `fireEvent`の乱用を避け、`user-event` で操作を表現
 - Snapshotは差分ノイズが増えやすいため原則使わない
-
----
-
-## モックの書き方
-
-### next/link・next/imageのモック
-
-`next/link`と`next/image`はjsdom環境では動作しないためモックが必要です。
-テストファイルごとに記述します。
-
-```tsx
-vi.mock('next/link', () => ({
-  default: ({
-    href,
-    children,
-    className,
-  }: {
-    href: string
-    children: React.ReactNode
-    className?: string
-  }) => (
-    <a href={href} className={className}>
-      {children}
-    </a>
-  ),
-}))
-
-vi.mock('next/image', () => ({
-  default: ({
-    src,
-    alt,
-    width,
-    height,
-  }: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }) => <img src={src} alt={alt} width={width} height={height} />,
-}))
-```
-
-### 環境変数を含むモジュールのモック
-
-`NEXT_PUBLIC_BASE_URL`などの環境変数を含むモジュールはテスト時にモックして固定値にします。
-
-```typescript
-vi.mock('@/constants/api', () => ({
-  BASE_URL: '',
-}))
-```
-
-### fetchのモック
-
-```typescript
-global.fetch = vi.fn().mockResolvedValue({
-  ok: true,
-  json: () => Promise.resolve(mockData),
-})
-```
 
 ---
 
