@@ -25,9 +25,15 @@ export const RepoDetail = ({ repo }: Props) => {
           className="rounded-full"
           alt={`${repo.owner.login}のアバター`}
         />
-        <div>
-          <h1 className="text-xl font-bold">{repo.full_name}</h1>
-          {repo.language && <span className="text-sm">{repo.language}</span>}
+        <div className="flex-1 min-w-0">
+          <h1 className="text-xl font-bold truncate" title={repo.full_name}>
+            {repo.full_name}
+          </h1>
+          {repo.language && (
+            <span className="text-sm block truncate" title={repo.language}>
+              {repo.language}
+            </span>
+          )}
         </div>
       </div>
 
