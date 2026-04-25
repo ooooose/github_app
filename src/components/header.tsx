@@ -12,8 +12,8 @@ export const Header = () => {
           className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
           <Image
-            src="/github.png"
-            alt="GitHub Logo"
+            src="/icon.png"
+            alt="App Logo"
             width={28}
             height={28}
             className="block"
