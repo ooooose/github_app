@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { AlertCircle, Home } from 'lucide-react';
+import Link from 'next/link'
+import { AlertCircle, Home } from 'lucide-react'
 
 export default function NotFound() {
   return (
@@ -36,5 +36,5 @@ export default function NotFound() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-import Image from 'next/image';
-import { Star, Eye, GitFork, CircleDot } from 'lucide-react';
-import type { Repository } from '@/features/github/types/github';
-import { formatCount } from '@/lib/format-count';
+import Image from 'next/image'
+import { Star, Eye, GitFork, CircleDot } from 'lucide-react'
+import type { Repository } from '@/features/github/types/github'
+import { formatCount } from '@/lib/format-count'
 
 type Props = {
-  repo: Repository;
-};
+  repo: Repository
+}
 
 const stats = (repo: Repository) => [
   { icon: Star, label: 'Stars', value: repo.stargazers_count },
   { icon: Eye, label: 'Watchers', value: repo.watchers_count },
   { icon: GitFork, label: 'Forks', value: repo.forks_count },
   { icon: CircleDot, label: 'Issues', value: repo.open_issues_count },
-];
+]
 
 export function RepoDetail({ repo }: Props) {
   return (
@@ -43,5 +43,5 @@ export function RepoDetail({ repo }: Props) {
         ))}
       </div>
     </div>
-  );
+  )
 }

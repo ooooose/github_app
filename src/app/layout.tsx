@@ -1,26 +1,26 @@
-import type { Metadata } from 'next';
-import { Inter, Geist } from 'next/font/google';
-import './globals.css';
-import { cn } from '@/lib/utils';
-import { Header } from '@/components/header';
+import type { Metadata } from 'next'
+import { Inter, Geist } from 'next/font/google'
+import './globals.css'
+import { cn } from '@/lib/utils'
+import { Header } from '@/components/header'
 
 const geist = Geist({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
-});
+})
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'GitRepos',
   description: 'GitHubリポジトリ検索アプリ',
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html
@@ -38,5 +38,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }

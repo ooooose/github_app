@@ -1,50 +1,50 @@
-'use client';
+'use client'
 
-import useSWRInfinite from 'swr/infinite';
-import { useEffect, useRef } from 'react';
-import { RepoItem } from '@/features/github/components/repo-item';
-import { fetcher } from '@/lib/fetcher';
+import useSWRInfinite from 'swr/infinite'
+import { useEffect, useRef } from 'react'
+import { RepoItem } from '@/features/github/components/repo-item'
+import { fetcher } from '@/lib/fetcher'
 import type {
   Repository,
   SearchRepositoriesResponse,
-} from '@/features/github/types/github';
+} from '@/features/github/types/github'
 
 type Props = {
-  keyword: string;
-};
+  keyword: string
+}
 
 export function RepoList({ keyword }: Props) {
   const getKey = (
     pageIndex: number,
     prev: SearchRepositoriesResponse | null,
   ): string | null => {
-    if (!keyword) return null;
-    if (prev && prev.items.length === 0) return null;
+    if (!keyword) return null
+    if (prev && prev.items.length === 0) return null
 
-    return `/api/github?q=${keyword}&page=${pageIndex + 1}`;
-  };
+    return `/api/github?q=${keyword}&page=${pageIndex + 1}`
+  }
 
   const { data, setSize, isValidating } =
-    useSWRInfinite<SearchRepositoriesResponse>(getKey, fetcher);
+    useSWRInfinite<SearchRepositoriesResponse>(getKey, fetcher)
 
-  const observerRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const element = observerRef.current;
-    if (!element) return;
+    const element = observerRef.current
+    if (!element) return
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        setSize((prev) => prev + 1);
+        setSize((prev) => prev + 1)
       }
-    });
+    })
 
-    observer.observe(element);
+    observer.observe(element)
 
-    return () => observer.disconnect();
-  }, [setSize]);
+    return () => observer.disconnect()
+  }, [setSize])
 
-  const repos: Repository[] = data ? data.flatMap((page) => page.items) : [];
+  const repos: Repository[] = data ? data.flatMap((page) => page.items) : []
 
   return (
     <div>
@@ -56,5 +56,5 @@ export function RepoList({ keyword }: Props) {
 
       {isValidating && <p className="text-sm text-gray-500">Loading...</p>}
     </div>
-  );
+  )
 }

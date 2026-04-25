@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { RepoList } from '@/features/github/components/repo-list';
+import { useState } from 'react'
+import { RepoList } from '@/features/github/components/repo-list'
 
 export function SearchBox() {
-  const [input, setInput] = useState('');
-  const [keyword, setKeyword] = useState('');
+  const [input, setInput] = useState('')
+  const [keyword, setKeyword] = useState('')
 
   const handleSearch = () => {
-    setKeyword(input);
-  };
+    setKeyword(input)
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    handleSearch();
-  };
+    e.preventDefault()
+    handleSearch()
+  }
 
   return (
     <div>
@@ -41,5 +41,5 @@ export function SearchBox() {
         <RepoList keyword={keyword} />
       </div>
     </div>
-  );
+  )
 }

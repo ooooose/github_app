@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { AlertTriangle, Home } from 'lucide-react';
+import Link from 'next/link'
+import { AlertTriangle, Home } from 'lucide-react'
 
 type ErrorProps = {
-  error: Error;
-  reset: () => void;
-};
+  error: Error
+  reset: () => void
+}
 
 export default function ErrorPage({ error, reset }: ErrorProps) {
   return (
@@ -47,5 +47,5 @@ export default function ErrorPage({ error, reset }: ErrorProps) {
         <p className="text-sm text-gray-500 pt-4">{error?.message}</p>
       </div>
     </div>
-  );
+  )
 }

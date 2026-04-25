@@ -1,4 +1,4 @@
-import { SearchBox } from '@/features/github/components/search-box';
+import { SearchBox } from '@/features/github/components/search-box'
 
 export default function Page() {
   return (
@@ -15,5 +15,5 @@ export default function Page() {
         <SearchBox />
       </div>
     </main>
-  );
+  )
 }
