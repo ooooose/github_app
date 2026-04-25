@@ -12,7 +12,7 @@ export function RepoItem({ repo }: Props) {
   return (
     <Link
       href={`/repo/${repo.owner.login}/${repo.name}`}
-      className="flex gap-4 py-4 border-b border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+      className="flex gap-4 py-4 border-b border-gray-200"
     >
       <Image
         src={repo.owner.avatar_url}
