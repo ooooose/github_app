@@ -12,7 +12,7 @@ export function RepoItem({ repo }: Props) {
   return (
     <Link
       href={`/repo/${repo.owner.login}/${repo.name}`}
-      className="flex gap-4 py-4 border-b border-gray-200"
+      className="flex w-full min-w-0 gap-4 rounded-md border border-border bg-card p-4 shadow-sm hover:bg-accent transition-colors"
     >
       <Image
         src={repo.owner.avatar_url}
@@ -22,11 +22,13 @@ export function RepoItem({ repo }: Props) {
         alt={`${repo.owner.login}のアバター`}
       />
       <div className="flex-1 min-w-0">
-        <p className="text-blue-600 font-semibold truncate">{repo.full_name}</p>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+        <p className="text-link font-semibold truncate hover:underline">
+          {repo.full_name}
+        </p>
+        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
           {repo.description ?? 'No description'}
         </p>
-        <div className="flex gap-4 text-xs text-gray-500 mt-2">
+        <div className="flex gap-4 text-xs text-muted-foreground mt-2">
           <span className="flex items-center gap-1">
             <Star size={12} aria-hidden="true" />
             <span className="sr-only">Stars:</span>

@@ -16,7 +16,7 @@ const stats = (repo: Repository) => [
 
 export function RepoDetail({ repo }: Props) {
   return (
-    <div className="max-w-5xl mx-auto p-6 lg:p-8 bg-white rounded-lg shadow-sm mt-6">
+    <div className="p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
       <div className="flex items-center gap-4">
         <Image
           src={repo.owner.avatar_url}
@@ -35,7 +35,10 @@ export function RepoDetail({ repo }: Props) {
 
       <div className="flex flex-wrap gap-6 mt-6">
         {stats(repo).map(({ icon: Icon, label, value }) => (
-          <div key={label} className="flex items-center gap-1 text-sm">
+          <div
+            key={label}
+            className="flex items-center gap-1 text-sm text-muted-foreground"
+          >
             <Icon size={16} aria-hidden="true" />
             <span className="sr-only">{label}:</span>
             <span>{formatCount(value)}</span>

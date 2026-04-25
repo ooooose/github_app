@@ -33,18 +33,3 @@ export type RepoItem = {
   issues: number
   language: string | null
 }
-
-export function mapRepo(repo: Repository): RepoItem {
-  return {
-    id: repo.id,
-    name: repo.full_name,
-    owner: repo.owner.login,
-    avatarUrl: repo.owner.avatar_url,
-    description: repo.description,
-    stars: repo.stargazers_count,
-    watchers: repo.watchers_count,
-    forks: repo.forks_count,
-    issues: repo.open_issues_count,
-    language: repo.language,
-  }
-}

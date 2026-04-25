@@ -1,18 +1,27 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { Container } from '@/components/container'
+
 export function Header() {
   return (
-    <header className="bg-white text-gray-900 border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-6 py-4">
+    <header className="bg-header text-header-foreground border-b border-header-border">
+      <Container className="py-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
+          className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <Image src="/github.png" alt="GitHub Logo" width={28} height={28} />
+          <Image
+            src="/github.png"
+            alt="GitHub Logo"
+            width={28}
+            height={28}
+            className="block"
+            priority
+          />
           <span className="text-lg font-semibold">GitRepos</span>
         </Link>
-      </div>
+      </Container>
     </header>
   )
 }
