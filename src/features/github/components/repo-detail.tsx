@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Repository } from '@/types/github';
+import type { Repository } from '@/features/github/types/github';
 
 type Props = {
   repo: Repository;

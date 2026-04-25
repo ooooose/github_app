@@ -1,4 +1,7 @@
-import type { SearchRepositoriesResponse, Repository } from '@/types/github';
+import type {
+  SearchRepositoriesResponse,
+  Repository,
+} from '@/features/github/types/github';
 
 type Params = {
   query: string;

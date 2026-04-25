@@ -4,7 +4,10 @@ import useSWRInfinite from 'swr/infinite';
 import { useEffect, useRef } from 'react';
 import { RepoItem } from './repo-item';
 import { fetcher } from '@/lib/fetcher';
-import type { Repository, SearchRepositoriesResponse } from '@/types/github';
+import type {
+  Repository,
+  SearchRepositoriesResponse,
+} from '@/features/github/types/github';
 
 type Props = {
   keyword: string;

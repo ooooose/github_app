@@ -1,5 +1,5 @@
-import { getRepo } from '@/lib/github';
-import { RepoDetail } from '@/components/repo-detail';
+import { getRepo } from '@/features/github/api/github';
+import { RepoDetail } from '@/features/github/components/repo-detail';
 
 type PageProps = {
   params: Promise<{
