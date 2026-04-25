@@ -8,7 +8,7 @@ type Props = {
   keyword: string
 }
 
-export function RepoList({ keyword }: Props) {
+export const RepoList = ({ keyword }: Props) => {
   const { repos, setSize, isValidating } = useRepoList(keyword)
   const observerRef = useRef<HTMLDivElement | null>(null)
 

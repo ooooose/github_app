@@ -6,7 +6,7 @@ type Props = {
   repo: string
 }
 
-export async function RepoDetailContainer({ owner, repo }: Props) {
+export const RepoDetailContainer = async ({ owner, repo }: Props) => {
   const data = await getRepo(owner, repo)
   return <RepoDetail repo={data} />
 }

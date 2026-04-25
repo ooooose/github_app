@@ -14,7 +14,7 @@ const stats = (repo: Repository) => [
   { icon: CircleDot, label: 'Issues', value: repo.open_issues_count },
 ]
 
-export function RepoDetail({ repo }: Props) {
+export const RepoDetail = ({ repo }: Props) => {
   return (
     <div className="p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
       <div className="flex items-center gap-4">

@@ -1,5 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 import { Star, GitFork } from 'lucide-react'
 import type { Repository } from '@/features/github/types/github'
 import { formatCount } from '@/lib/format-count'
@@ -8,11 +12,36 @@ type Props = {
   repo: Repository
 }
 
-export function RepoItem({ repo }: Props) {
+export const RepoItem = ({ repo }: Props) => {
+  const router = useRouter()
+  const href = `/repo/${repo.owner.login}/${repo.name}`
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const clearTimer = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+      timerRef.current = null
+    }
+  }
+
+  useEffect(() => clearTimer, [])
+
+  const schedulePrefetch = () => {
+    clearTimer()
+    timerRef.current = setTimeout(() => {
+      router.prefetch(href)
+    }, 300)
+  }
+
   return (
     <Link
-      href={`/repo/${repo.owner.login}/${repo.name}`}
+      href={href}
+      prefetch={false}
       className="flex w-full min-w-0 gap-4 rounded-md border border-border bg-card p-4 shadow-sm hover:bg-accent transition-colors"
+      onMouseEnter={schedulePrefetch}
+      onMouseLeave={clearTimer}
+      onFocus={schedulePrefetch}
+      onBlur={clearTimer}
     >
       <Image
         src={repo.owner.avatar_url}

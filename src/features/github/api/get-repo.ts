@@ -1,10 +1,10 @@
 import type { Repository } from '@/features/github/types/github'
 import { BASE_URL } from '@/constants/api'
 
-export async function getRepo(
+export const getRepo = async (
   owner: string,
   name: string,
-): Promise<Repository> {
+): Promise<Repository> => {
   const res = await fetch(`${BASE_URL}/api/github/${owner}/${name}`)
 
   if (!res.ok) {

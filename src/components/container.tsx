@@ -12,7 +12,7 @@ const sizeClassName: Record<NonNullable<Props['size']>, string> = {
 }
 
 // NOTE: ページ全体の横幅を統一するためのラッパーコンポーネント
-export function Container({ className, size = 'md', ...props }: Props) {
+export const Container = ({ className, size = 'md', ...props }: Props) => {
   return (
     <div
       data-slot="container"

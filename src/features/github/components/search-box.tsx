@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { RepoList } from '@/features/github/components/repo-list'
 import { SearchForm } from '@/features/github/components/search-form'
 
-export function SearchBox() {
+export const SearchBox = () => {
   const [keyword, setKeyword] = useState('')
 
   return (

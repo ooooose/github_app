@@ -8,7 +8,7 @@ import type {
   SearchRepositoriesResponse,
 } from '@/features/github/types/github'
 
-export function useRepoList(keyword: string) {
+export const useRepoList = (keyword: string) => {
   const { data, setSize, isValidating } =
     useSWRInfinite<SearchRepositoriesResponse>(
       (pageIndex, prev) => getRepoListKey(keyword, pageIndex, prev),
