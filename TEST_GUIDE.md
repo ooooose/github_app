@@ -42,51 +42,7 @@ src/
 │       └── __tests__/
 │           └── repo-item.test.tsx
 tests/
-└── setup.ts   # セットアップのみ。テストファイルはここに置かない
-```
-
----
-
-## セットアップ
-
-### tests/setup.ts
-
-```typescript
-import '@testing-library/jest-dom'
-```
-
-### vitest.config.ts
-
-```typescript
-import { defineConfig } from 'vitest/config'
-import react from '@vitejs/plugin-react'
-import path from 'path'
-
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./tests/setup.ts'],
-    include: ['src/**/__tests__/**/*.{test,spec}.{ts,tsx}'],
-    pool: 'forks',
-    coverage: {
-      provider: 'v8',
-      exclude: [
-        'node_modules/**',
-        'tests/**',
-        '**/__tests__/**',
-        '*.config.*',
-        'src/app/**',
-      ],
-    },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
-})
+└── setup.ts   # セットアップのみ。基本テストファイルはここに置かない
 ```
 
 ---
@@ -112,63 +68,25 @@ export default defineConfig({
 
 ---
 
-## モックの書き方
+## テスト設計（パターン）
 
-### next/link・next/imageのモック
+このリポジトリは、実務で一般的なテスト設計パターンに寄せて運用します。
 
-`next/link`と`next/imageはjsdom環境では動作しないためモックが必要です。
-テストファイルごとに記述します。
+### Testing Pyramid（テストピラミッド）
 
-```tsx
-vi.mock('next/link', () => ({
-  default: ({
-    href,
-    children,
-    className,
-  }: {
-    href: string
-    children: React.ReactNode
-    className?: string
-  }) => (
-    <a href={href} className={className}>
-      {children}
-    </a>
-  ),
-}))
+基本は「安いテストを厚く、重いテストを薄く」という思想で記述する指針を採用しています。
 
-vi.mock('next/image', () => ({
-  default: ({
-    src,
-    alt,
-    width,
-    height,
-  }: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }) => <img src={src} alt={alt} width={width} height={height} />,
-}))
-```
+- **Unit（厚め）**: `lib/`の純粋関数、`features/*/api`のキー生成など（副作用が少なく高速）
+- **Component（適量）**: `components/`や`features/*/components` の振る舞い（ユーザー視点）
+- **E2E（最小）**: このリポジトリでは現状未導入だが、必要になったら別途追加する想定
 
-### 環境変数を含むモジュールのモック
+### Testing Libraryの原則
 
-`NEXT_PUBLIC_BASE_URL`などの環境変数を含むモジュールはテスト時にモックして固定値にします。
+Reactコンポーネントは「ユーザーが見て操作するもの」を中心にテストします。
 
-```typescript
-vi.mock('@/constants/api', () => ({
-  BASE_URL: '',
-}))
-```
-
-### fetchのモック
-
-```typescript
-global.fetch = vi.fn().mockResolvedValue({
-  ok: true,
-  json: () => Promise.resolve(mockData),
-})
-```
+- アクセシビリティと相性が良い`getByRole`を優先
+- `fireEvent`の乱用を避け、`user-event` で操作を表現
+- Snapshotは差分ノイズが増えやすいため原則使わない
 
 ---
 
@@ -239,7 +157,6 @@ describe('Header', () => {
 {
   "scripts": {
     "test": "vitest --reporter=dot",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage --reporter=dot"
   }
 }
@@ -249,7 +166,7 @@ describe('Header', () => {
 
 ## CI
 
-`.github/workflows/vitest.yml`でPR・mainへのpush時に自動実行されます。
+`.github/workflows/test.yml`でPR・mainへのpush時に自動実行されます。
 以下のパスへの変更のみの場合はスキップされます。
 
 - `**.md`

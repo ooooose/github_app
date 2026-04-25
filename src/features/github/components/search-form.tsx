@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-export function SearchForm({ onSearch }: { onSearch: (q: string) => void }) {
+export const SearchForm = ({ onSearch }: { onSearch: (q: string) => void }) => {
   const [value, setValue] = useState('')
   const trimmed = value.trim()
 

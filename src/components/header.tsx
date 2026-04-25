@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 import { Container } from '@/components/container'
 
-export function Header() {
+export const Header = () => {
   return (
-    <header className="bg-header text-header-foreground border-b border-header-border">
+    <header className="sticky top-0 z-50 bg-header text-header-foreground border-b border-header-border">
       <Container className="py-3">
         <Link
           href="/"

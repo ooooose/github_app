@@ -1,6 +1,6 @@
 import { Skeleton } from '@/components/ui/skeleton'
 
-export function RepoDetailSkeleton() {
+export const RepoDetailSkeleton = () => {
   return (
     <div className="w-full min-w-0 overflow-hidden p-6 lg:p-8 bg-card border border-border rounded-md shadow-sm">
       <div className="flex items-center gap-4">

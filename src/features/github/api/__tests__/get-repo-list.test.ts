@@ -1,4 +1,4 @@
-import { getRepoListKey } from '../get-repo-list'
+import { getRepoListKey } from '@/features/github/api/get-repo-list'
 import type { SearchRepositoriesResponse } from '@/features/github/types/github'
 
 vi.mock('@/constants/api', () => ({
