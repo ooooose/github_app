@@ -1,5 +1,5 @@
 import { getRepo } from '@/features/github/api/get-repo'
-import { RepoDetail } from './repo-detail'
+import { RepoDetail } from '@/features/github/components/repo-detail'
 
 type Props = {
   owner: string

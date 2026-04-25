@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { Container } from '../container'
+import { Container } from '@/components/container'
 
 describe('Container', () => {
   it('デフォルトでmax-w-4xlが適用される', () => {
