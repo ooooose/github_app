@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
 export function SearchForm({ onSearch }: { onSearch: (q: string) => void }) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('')
 
   return (
     <div className="border-b border-gray-200 pb-4 mb-4">
@@ -20,5 +20,5 @@ export function SearchForm({ onSearch }: { onSearch: (q: string) => void }) {
         Search
       </button>
     </div>
-  );
+  )
 }

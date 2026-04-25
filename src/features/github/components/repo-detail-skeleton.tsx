@@ -12,5 +12,5 @@ export function RepoDetailSkeleton() {
         ))}
       </div>
     </div>
-  );
+  )
 }

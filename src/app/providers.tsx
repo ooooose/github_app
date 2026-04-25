@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { SWRConfig } from 'swr';
-import { fetcher } from '@/lib/fetcher';
+import { SWRConfig } from 'swr'
+import { fetcher } from '@/lib/fetcher'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -14,5 +14,5 @@ export function Providers({ children }: { children: React.ReactNode }) {
     >
       {children}
     </SWRConfig>
-  );
+  )
 }

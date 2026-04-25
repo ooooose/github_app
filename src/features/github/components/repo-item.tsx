@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Star, GitFork } from 'lucide-react';
-import type { Repository } from '@/features/github/types/github';
-import { formatCount } from '@/lib/format-count';
+import Image from 'next/image'
+import Link from 'next/link'
+import { Star, GitFork } from 'lucide-react'
+import type { Repository } from '@/features/github/types/github'
+import { formatCount } from '@/lib/format-count'
 
 type Props = {
-  repo: Repository;
-};
+  repo: Repository
+}
 
 export function RepoItem({ repo }: Props) {
   return (
@@ -41,5 +41,5 @@ export function RepoItem({ repo }: Props) {
         </div>
       </div>
     </Link>
-  );
+  )
 }
