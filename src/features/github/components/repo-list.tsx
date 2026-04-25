@@ -2,7 +2,7 @@
 
 import useSWRInfinite from 'swr/infinite';
 import { useEffect, useRef } from 'react';
-import { RepoItem } from './repo-item';
+import { RepoItem } from '@/features/github/components/repo-item';
 import { fetcher } from '@/lib/fetcher';
 import type {
   Repository,
@@ -30,8 +30,8 @@ export function RepoList({ keyword }: Props) {
   const observerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const el = observerRef.current;
-    if (!el) return;
+    const element = observerRef.current;
+    if (!element) return;
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
@@ -39,7 +39,7 @@ export function RepoList({ keyword }: Props) {
       }
     });
 
-    observer.observe(el);
+    observer.observe(element);
 
     return () => observer.disconnect();
   }, [setSize]);

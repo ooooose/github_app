@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { RepoList } from './repo-list';
+import { RepoList } from '@/features/github/components/repo-list';
 
 export function SearchBox() {
   const [input, setInput] = useState('');
