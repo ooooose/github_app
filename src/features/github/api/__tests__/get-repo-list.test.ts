@@ -1,6 +1,10 @@
 import { getRepoListKey } from '../get-repo-list'
 import type { SearchRepositoriesResponse } from '@/features/github/types/github'
 
+vi.mock('@/constants/api', () => ({
+  BASE_URL: '',
+}))
+
 const mockResponse = (itemCount: number): SearchRepositoriesResponse =>
   ({
     total_count: itemCount,
@@ -21,20 +25,21 @@ describe('getRepoListKey', () => {
 
   describe('URLを返すケース', () => {
     it('初回ページ(pageIndex: 0)のURLを返す', () => {
-      const url = getRepoListKey('react', 0, null)
-      expect(url).toContain('/api/github')
-      expect(url).toContain('q=react')
-      expect(url).toContain('page=1')
+      expect(getRepoListKey('react', 0, null)).toBe(
+        '/api/github?q=react&page=1',
+      )
     })
 
     it('2ページ目のURLを返す', () => {
-      const url = getRepoListKey('react', 1, mockResponse(30))
-      expect(url).toContain('page=2')
+      expect(getRepoListKey('react', 1, mockResponse(30))).toBe(
+        '/api/github?q=react&page=2',
+      )
     })
 
     it('keywordがURLに含まれる', () => {
-      const url = getRepoListKey('react hooks', 0, null)
-      expect(url).toContain('q=react')
+      expect(getRepoListKey('react hooks', 0, null)).toBe(
+        '/api/github?q=react hooks&page=1',
+      )
     })
   })
 })

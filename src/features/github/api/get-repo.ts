@@ -1,6 +1,5 @@
 import type { Repository } from '@/features/github/types/github'
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+import { BASE_URL } from '@/constants/api'
 
 export async function getRepo(
   owner: string,

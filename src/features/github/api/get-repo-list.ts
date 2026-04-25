@@ -1,7 +1,6 @@
 // features/github/api/get-repo-list.ts
 import type { SearchRepositoriesResponse } from '@/features/github/types/github'
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+import { BASE_URL } from '@/constants/api'
 
 export function getRepoListKey(
   keyword: string,
