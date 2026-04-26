@@ -1,4 +1,4 @@
-# github-app
+# GitRepos
 
 ## 概要
 
