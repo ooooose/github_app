@@ -9,7 +9,7 @@ type Props = {
 }
 
 export const RepoList = ({ keyword }: Props) => {
-  const { repos, setSize, isValidating } = useRepoList(keyword)
+  const { repos, totalCount, setSize, isValidating } = useRepoList(keyword)
   const observerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -29,13 +29,27 @@ export const RepoList = ({ keyword }: Props) => {
     return () => observer.disconnect()
   }, [setSize])
 
+  const shouldShowTotalCount = keyword.trim().length > 0 && totalCount !== null
+
   return (
     <div className="space-y-3">
+      {shouldShowTotalCount && (
+        <p className="text-sm text-muted-foreground">
+          検索結果: {totalCount.toLocaleString()}件
+        </p>
+      )}
+
       {repos.map((repo) => (
         <RepoItem key={repo.id} repo={repo} />
       ))}
 
       <div ref={observerRef} className="h-10" />
+
+      {shouldShowTotalCount && totalCount === 0 && !isValidating && (
+        <p className="text-sm text-muted-foreground">
+          該当するリポジトリがありません
+        </p>
+      )}
 
       {isValidating && (
         <p className="text-sm text-muted-foreground">Loading...</p>
