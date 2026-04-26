@@ -23,5 +23,6 @@ export const useRepoList = (keyword: string) => {
   }, [keyword, setSize])
 
   const repos: Repository[] = data ? data.flatMap((page) => page.items) : []
-  return { repos, setSize, isValidating }
+  const totalCount = data?.[0]?.total_count ?? null
+  return { repos, totalCount, setSize, isValidating }
 }
