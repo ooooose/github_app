@@ -1,5 +1,6 @@
 import { SearchBox } from '@/features/github/components/search-box'
 import { Container } from '@/components/container'
+import { sanitizeKeyword } from '@/lib/sanitize-keyword'
 
 type Props = {
   searchParams: Promise<{ q?: string | string[] | undefined }>
@@ -7,8 +8,8 @@ type Props = {
 
 export default async function Page({ searchParams }: Props) {
   const { q } = await searchParams
-  const keyword =
-    typeof q === 'string' ? q : Array.isArray(q) ? (q[0] ?? '') : ''
+  const rawKeyword = (Array.isArray(q) ? q[0] : q) ?? ''
+  const keyword = sanitizeKeyword(rawKeyword)
 
   return (
     <main className="min-h-screen bg-background">
