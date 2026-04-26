@@ -2,6 +2,8 @@ import { SearchBox } from '@/features/github/components/search-box'
 import { Container } from '@/components/container'
 import { sanitizeKeyword } from '@/lib/sanitize-keyword'
 
+// searchParamsはDynamicAPIでPromiseとして渡されるため、awaitして値を取得する必要がある
+// docs: https://nextjs.org/docs/messages/sync-dynamic-apis
 type Props = {
   searchParams: Promise<{ q?: string | string[] | undefined }>
 }

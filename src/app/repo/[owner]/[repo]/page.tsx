@@ -3,6 +3,8 @@ import { RepoDetailContainer } from '@/features/github/components/repo-detail-co
 import { RepoDetailSkeleton } from '@/features/github/components/repo-detail-skeleton'
 import { Container } from '@/components/container'
 
+// searchParamsはDynamicAPIでPromiseとして渡されるため、awaitして値を取得する必要がある
+// docs: https://nextjs.org/docs/messages/sync-dynamic-apis
 type PageProps = {
   params: Promise<{ owner: string; repo: string }>
 }
