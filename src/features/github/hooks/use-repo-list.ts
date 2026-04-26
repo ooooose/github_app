@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import useSWRInfinite from 'swr/infinite'
 import {
   getRepoList,
@@ -14,6 +15,10 @@ export const useRepoList = (keyword: string) => {
       (pageIndex, prev) => getRepoListKey(keyword, pageIndex, prev),
       getRepoList,
     )
+
+  useEffect(() => {
+    setSize(1)
+  }, [keyword, setSize])
 
   const repos: Repository[] = data ? data.flatMap((page) => page.items) : []
   return { repos, setSize, isValidating }
