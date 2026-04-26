@@ -38,7 +38,7 @@ describe('getRepoListKey', () => {
 
     it('keywordがURLに含まれる', () => {
       expect(getRepoListKey('react hooks', 0, null)).toBe(
-        '/api/github?q=react hooks&page=1',
+        '/api/github?q=reacthooks&page=1',
       )
     })
   })

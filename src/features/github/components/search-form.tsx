@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-export const SearchForm = ({ onSearch }: { onSearch: (q: string) => void }) => {
-  const [value, setValue] = useState('')
+type Props = {
+  defaultValue?: string
+  onSearch: (q: string) => void
+}
+
+export const SearchForm = ({ defaultValue = '', onSearch }: Props) => {
+  const [value, setValue] = useState(defaultValue)
   const trimmed = value.trim()
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {

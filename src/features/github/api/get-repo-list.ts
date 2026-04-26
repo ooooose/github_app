@@ -1,15 +1,19 @@
 // features/github/api/get-repo-list.ts
 import type { SearchRepositoriesResponse } from '@/features/github/types/github'
 import { BASE_URL } from '@/constants/api'
+import { sanitizeKeyword } from '@/lib/sanitize-keyword'
 
 export const getRepoListKey = (
   keyword: string,
   pageIndex: number,
   prev: SearchRepositoriesResponse | null,
 ): string | null => {
-  if (!keyword) return null
+  const sanitized = sanitizeKeyword(keyword)
+  if (!sanitized) return null
   if (prev && prev.items.length === 0) return null
-  return `${BASE_URL}/api/github?q=${keyword}&page=${pageIndex + 1}`
+  return `${BASE_URL}/api/github?q=${encodeURIComponent(sanitized)}&page=${
+    pageIndex + 1
+  }`
 }
 
 export const getRepoList = async (
