@@ -13,6 +13,7 @@ export const SearchForm = ({ defaultValue = '', onSearch }: Props) => {
   const [value, setValue] = useState(defaultValue)
   const trimmed = value.trim()
 
+  // NOTE: 当初React.FormEvent<HTMLFormElement>にしていたがdeprecatedになっていたので、React.SyntheticEvent<HTMLFormElement>に変更
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     onSearch(trimmed)

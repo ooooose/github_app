@@ -9,6 +9,8 @@ import type {
   SearchRepositoriesResponse,
 } from '@/features/github/types/github'
 
+// NOTE: useSWRInfiniteを使ってリポジトリのリストを取得するカスタムフック
+// docs: https://swr.vercel.app/docs/pagination#useswrinfinite
 export const useRepoList = (keyword: string) => {
   const { data, setSize, isValidating } =
     useSWRInfinite<SearchRepositoriesResponse>(
