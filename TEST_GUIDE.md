@@ -1,4 +1,4 @@
-# TESTING GUIDE
+# TEST GUIDE
 
 ## 概要
 
