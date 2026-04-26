@@ -23,11 +23,7 @@ export const SearchBox = ({ initialKeyword }: Props) => {
 
   return (
     <div>
-      <SearchForm
-        key={initialKeyword}
-        defaultValue={initialKeyword}
-        onSearch={handleSearch}
-      />
+      <SearchForm defaultValue={initialKeyword} onSearch={handleSearch} />
       <p className="mt-2 text-xs text-muted-foreground">
         ※キーワードは1つだけ指定できます
       </p>
