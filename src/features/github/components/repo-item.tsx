@@ -26,6 +26,7 @@ export const RepoItem = ({ repo }: Props) => {
 
   useEffect(() => clearTimer, [])
 
+  // NOTE: 300msホバーしたらprefetchする。
   const schedulePrefetch = () => {
     clearTimer()
     timerRef.current = setTimeout(() => {

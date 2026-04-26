@@ -16,6 +16,8 @@ export const RepoList = ({ keyword }: Props) => {
     const element = observerRef.current
     if (!element) return
 
+    // NOTE: IntersectionObserverを使って、最後の要素が画面に入ったら次のページを読み込む。
+    // docs: https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setSize((prev) => prev + 1)

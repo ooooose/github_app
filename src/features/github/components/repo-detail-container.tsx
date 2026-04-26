@@ -6,6 +6,7 @@ type Props = {
   repo: string
 }
 
+// RepoDetailに一元化するか迷ったが、RepoDetailは純粋なUIコンポーネントでRepoDetailContainerでデータ取得と責務を分けることにした
 export const RepoDetailContainer = async ({ owner, repo }: Props) => {
   const data = await getRepo(owner, repo)
   return <RepoDetail repo={data} />
