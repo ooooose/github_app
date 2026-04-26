@@ -29,7 +29,7 @@ export const SearchBox = ({ initialKeyword }: Props) => {
         onSearch={handleSearch}
       />
       <p className="mt-2 text-xs text-muted-foreground">
-        ※キーワードは1つだけ指定できます（空白は自動で除去されます）
+        ※キーワードは1つだけ指定できます
       </p>
       <div className="mt-6">
         <RepoList keyword={initialKeyword} />
