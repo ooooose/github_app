@@ -41,11 +41,6 @@ UIはGitHubに馴染みのあるトーンを目標にしつつ、実務で保守
 - `src/app/api/github/**`でGitHubAPIをプロキシし、`GITHUB_TOKEN`はサーバー側で付与します。
 - 目的: クライアントへトークンを出さない、外部API差分/エラーを吸収、UI側の呼び出しを安定化。
 
-### Progressive Prefetch（段階的な先読み）
-
-- 一覧は`<Link prefetch={false}>`で自動先読みを止め、hover/focus時にだけ`router.prefetch()`しています。
-- 目的: リンク数が多い画面での過剰な先読み（=外部API負荷/帯域）を抑制しつつ、体感速度は確保。
-
 ## テスト
 
 - `vitest`+Testing Library を使用
